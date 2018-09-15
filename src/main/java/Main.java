@@ -1,24 +1,39 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
-/**
- * Created by NATA on 15.09.2018.
- */
+
 public class Main {
     public static void main(String[] args) throws IOException {
-       FileWriter writer =new FileWriter("cards.txt");
-        String [] a={"2","3","4","5","6","7","8","9", "10","V","D","K","T"};
-        String [] b={"Spades","Clubs", "Diamonds", "Hearts"};
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < b.length; j++) {
-                String s= a[i]+" "+ b[j];
-                writer.write(s);
+        long p = 113;
+        long q = 11;
+        RSA rsa = new RSA(p, q);
+        System.out.println("1.Generating public and private keys for everyone");
+        FileWriter writer;
+        for (int i = 0; i < 3; i++) {
+            long e = rsa.getE();
+            long d = rsa.getD();
+            long n = rsa.getN();
+            if(i==0) {
+                writer = new FileWriter("for_A.txt");
+                writer.write(String.valueOf(e));
                 writer.append('\n');
+                writer.write(String.valueOf(d));
             }
+            else if (i==1){
+                    writer = new FileWriter("for_B.txt");
+                    writer.write(String.valueOf(e));
+                    writer.append('\n');
+                    writer.write(String.valueOf(d));
+            }
+            else {
+                    writer = new FileWriter("for A.txt");
+                    writer.write(String.valueOf(e));
+                    writer.append('\n');
+                    writer.write(String.valueOf(d));
+                }
+
         }
-        writer.flush();
+        System.out.println("2.A is encrypting of cards");
+
     }
 }

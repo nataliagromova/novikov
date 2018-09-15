@@ -52,6 +52,10 @@ public class Poker {
         }
        return randomN;
     }
+    static long Random(){
+       return BigInteger.probablePrime(5,new Random()).longValue();
+
+    }
 
     private static Long Encrypting(long m, long e, long p) {
         BigInteger n = new BigInteger(String.valueOf(m));
