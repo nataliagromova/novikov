@@ -1,5 +1,8 @@
+package Generation_keys;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.TreeSet;
 
 /**
@@ -31,7 +34,9 @@ public class RSA {
     }
 
     private long Calculate_e(long f_n) {
-        for (int i = 3; i < f_n; i++) {
+        Random r=new Random();
+        int l=r.nextInt(200);
+        for (int i = l; i < f_n; i++) {
             if (LucTest(i) && f_n % i != 0) {
                 return i;
             }
@@ -45,7 +50,7 @@ public class RSA {
         return d.longValue();
     }
 
-    public static TreeSet<Long> PrimeNumbersOf(long n) {
+    private static TreeSet<Long> PrimeNumbersOf(long n) {
         TreeSet<Long> factors = new TreeSet<>();
         for (int i = 2; i <= n / i; i++) {
             while (n % i == 0) {
