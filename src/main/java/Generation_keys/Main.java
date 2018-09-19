@@ -7,15 +7,13 @@ import Encrypting.Poker;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        long p = 1243;
-        long q = 11;
+        long n=Generation_key.RandPrime();
         System.out.println("1.Generating public and private keys for everyone");
         FileWriter writer;
         for (int i = 0; i < 3; i++) {
-            RSA rsa = new RSA(p, q);
-            long e = rsa.getE();
-            long d = rsa.getD();
-            long n = rsa.getN();
+            Generation_key key=new Generation_key(n);
+            long e = Generation_key.getE();
+            long d = Generation_key.getD();
             if (i == 0) {
                 writer = new FileWriter("keys_A.txt");
                 writer.write(String.valueOf(e));
@@ -40,8 +38,9 @@ public class Main {
             }
             writer.flush();
         }
-        System.out.println("2.A is encrypting the cards");
-        Poker.HashcodeCards("cards.txt");
+        Cards_generation.Generation_card();
+        System.out.println("2.Cards have their hashcodes.");
+//        Poker.HashcodeCards("cards.txt");
 
     }
 }
