@@ -40,7 +40,6 @@ public class Main {
         }
         Cards_generation.Generation_card();
         System.out.println("2.Cards have their hashcodes.");
-//        Poker.HashcodeCards("cards.txt");
-
+        Poker.DeleteFiles();
     }
 }
