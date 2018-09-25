@@ -11,58 +11,12 @@ import java.util.stream.Collectors;
 
 
 public class Poker {
-    final static LinkedHashMap<Integer, String> cardsHash = new LinkedHashMap<>();
-
-    public static void HashcodeCards(String catalognameFrom) throws IOException {
-        List<File> mas = ListOfFiles(catalognameFrom);
-        FileWriter writer;
-        for (File f : mas) {
-            String l = Arrays.toString(Files.readAllBytes(f.toPath()));
-            writer = new FileWriter("Hcards" + "/" + f.getName());
-            char[] mass;
-            writer.write(Integer.parseInt(l, 2));
-            writer.flush();
-        }
-    }
-
-    public static void OpenCards() throws IOException {
-        String[] mas = {"Ea.txt", "Eb.txt", "Ec.txt"};
-        for (String ma : mas) {
-            List<String> lines = Files.readAllLines(Paths.get(ma), StandardCharsets.UTF_8);
-            FileWriter writer = new FileWriter(ma);
-            for (String line : lines) {
-                writer.write(cardsHash.get(Integer.parseInt(line)));
-                writer.append('\n');
-            }
-            writer.flush();
-        }
-
-    }
-
-
     static void EncryptCards(String catalognameFrom, String catalognameTo, long e, long p) throws IOException {
         List<File> mas = ListOfFiles(catalognameFrom);
-//        FileWriter writer = null;
-//        String res;
-//        for (File f : mas) {
-//            byte[] lines = Files.readAllBytes(f.toPath());
-//            writer = new FileWriter(catalognameTo + "/" + f.getName());
-//            res = String.valueOf(Encrypting(lines, e, p));
-//            writer.append(res).append('\n');
-//            writer.flush();
-//        }
-//
-//        writer.close();
-//        System.gc();
         InputStream in;
         OutputStream out;
         int ch;
         for (File f : mas) {
-//            byte[] lines = Files.readAllBytes(f.toPath());
-//            writer = new FileWriter(catalognameTo + "/" + f.getName());
-//            res = String.valueOf(Encrypting(lines, e, p));
-//            writer.append(res).append('\n');
-//            writer.flush();
             in=new FileInputStream(f);
             out=new FileOutputStream(catalognameTo + "/" + f.getName().split("\\.")[0]
                     +".dat");
@@ -105,12 +59,6 @@ public class Poker {
 
 
     private static Long Encrypting(int ch, long e, long p) {
-//        int m = 0;
-//        for (byte aL : l) {
-//            m += aL;
-//        }
-//        BigInteger n = new BigInteger(String.valueOf(m));
-//        return n.modPow(BigInteger.valueOf(e), BigInteger.valueOf(p)).longValue();
         BigInteger n = new BigInteger(String.valueOf(ch));
         return n.modPow(BigInteger.valueOf(e), BigInteger.valueOf(p)).longValue();
     }

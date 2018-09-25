@@ -39,7 +39,7 @@ public class Main {
             writer.flush();
         }
         Cards_generation.Generation_card();
-        System.out.println("2.Cards have their hashcodes.");
+        System.out.println("Generate random cards with hashcodes in directory All_cards.");
         Poker.DeleteFiles();
     }
 }

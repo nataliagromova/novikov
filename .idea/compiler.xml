@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mentalpocker" />
+        <module name="mentalpoker" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mentalpocker" target="1.8" />
+      <module name="mentalpoker" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
